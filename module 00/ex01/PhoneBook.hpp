@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shrimech <shrimech@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 03:03:10 by shrimech          #+#    #+#             */
-/*   Updated: 2025/09/05 06:31:30 by shrimech         ###   ########.fr       */
+/*   Created: 2025/08/28 06:35:45 by shrimech          #+#    #+#             */
+/*   Updated: 2025/09/05 06:39:46 by shrimech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+#include "./Contact.hpp"
 #include <iostream>
 
-int main(int ac,char **av){
-    using namespace std;
-    if (ac >= 2) {
-        for(int i = 1 ;av[i]; i++) {
-            for(int j = 0 ; av[i][j] ; j++) {
-                if (i != 1 && j == 0)
-                    cout << ' ';
-                cout << (char) toupper(av[i][j]) ;
-            }
-        }
-    }
-    else
-        cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-    cout << endl ;
-}
+class PhoneBook {
+private:
+	Contact	contacts[8];
+	int 	size;
+	int 	index;
+public:
+	PhoneBook() : size (0), index (0) {}
+	int 	get_size(void) const;
+	void	add_contact(std::string data[5]);
+	void	display_contact(int i) const;
+	void	display_phonebook(void) const;
+};
